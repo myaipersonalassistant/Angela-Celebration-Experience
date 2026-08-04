@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#041820">
+  <title>Angela Celebration · MC Dashboard</title>
+  <link rel="icon" href="public/logobg.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-atmosphere" aria-hidden="true"></div>
+
+  <div id="adminGate" class="admin-gate">
+    <div class="gate-shell">
+      <img class="gate-logo" src="public/logobg.png" alt="Celebrate Angela Ifonlaja">
+      <p class="gate-kicker">Host access only</p>
+      <h1 class="gate-title">Evening<br>Control</h1>
+      <p class="gate-copy">Unlock the live desk for scores, tables and the Legacy Wall.</p>
+      <label class="gate-label">Password
+        <input id="adminPasswordInput" type="password" autocomplete="current-password" placeholder="Enter host password">
+      </label>
+      <button class="gate-button" id="adminUnlock" type="button">Enter dashboard</button>
+      <p id="adminGateError" class="gate-error hidden">Incorrect password.</p>
+    </div>
+  </div>
+
+  <div id="adminApp" class="admin-app hidden">
+    <aside class="admin-sidebar">
+      <a class="sidebar-brand" href="/admin" aria-label="Angela MC Dashboard">
+        <img src="public/logobg.png" alt="Angela">
+        <div>
+          <strong>Angela</strong>
+          <span>Mission Control</span>
+        </div>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Admin pages">
+        <button type="button" class="nav-item active" data-page="overview">
+          <span class="nav-index">01</span>
+          <span>Overview</span>
+        </button>
+        <button type="button" class="nav-item" data-page="tables">
+          <span class="nav-index">02</span>
+          <span>Tables</span>
+        </button>
+        <button type="button" class="nav-item" data-page="leaderboard">
+          <span class="nav-index">03</span>
+          <span>Leaderboard</span>
+        </button>
+        <button type="button" class="nav-item" data-page="legacy">
+          <span class="nav-index">04</span>
+          <span>Legacy Wall</span>
+        </button>
+        <button type="button" class="nav-item" data-page="announce">
+          <span class="nav-index">05</span>
+          <span>Announce</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a class="ghost-btn frontend-link" href="/challenge.html">View celebration →</a>
+        <span id="connectionBadge" class="live-pill">Checking…</span>
+        <span id="lastRefresh" class="refresh-time">Not refreshed yet</span>
+        <button class="ghost-btn" id="refreshDashboard" type="button">Refresh</button>
+        <button class="ghost-btn" id="autoRefreshToggle" type="button">Auto-refresh: On</button>
+        <button class="ghost-btn" id="adminLock" type="button">Lock</button>
+      </div>
+    </aside>
+
+    <div class="admin-shell">
+      <header class="admin-topbar">
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu">Menu</button>
+        <div>
+          <p class="admin-eyebrow" id="pageEyebrow">Private event desk</p>
+          <h1 id="pageTitle">Overview</h1>
+        </div>
+        <p class="topbar-note" id="pageNote">Live pulse of the evening</p>
+      </header>
+
+      <main class="admin-main">
+        <div id="adminAlert" class="admin-alert hidden" role="status"></div>
+
+        <section class="admin-page active" id="page-overview" data-title="Overview" data-note="Live pulse of the evening">
+          <section class="stat-rail" id="statGrid" aria-label="Event summary"></section>
+          <section class="panel podium-panel">
+            <div class="panel-label">Tonight’s lead</div>
+            <div id="winnerCard" class="podium">
+              <p class="empty">Waiting for the first table submission…</p>
+            </div>
+          </section>
+        </section>
+
+        <section class="admin-page" id="page-tables" data-title="Tables" data-note="Which tables have submitted">
+          <section class="panel tracker-panel">
+            <div class="panel-head">
+              <div>
+                <div class="panel-label">Table floor</div>
+                <h2>Who’s in</h2>
+              </div>
+              <p class="panel-note">Submitted vs waiting</p>
+            </div>
+            <div id="tableTracker" class="table-constellation"></div>
+          </section>
+        </section>
+
+        <section class="admin-page" id="page-leaderboard" data-title="Leaderboard" data-note="Score first · time breaks ties">
+          <section class="panel board-panel">
+            <div class="panel-head">
+              <div>
+                <div class="panel-label">Standings</div>
+                <h2>Full results</h2>
+              </div>
+            </div>
+            <div id="leaderboard" class="standings"></div>
+          </section>
+        </section>
+
+        <section class="admin-page" id="page-legacy" data-title="Legacy Wall" data-note="Prayers, memories and tributes">
+          <section class="panel legacy-panel">
+            <div class="panel-head">
+              <div>
+                <div class="panel-label">Words that remain</div>
+                <h2>Guest messages</h2>
+              </div>
+            </div>
+            <div class="legacy-filters" id="legacyFilters">
+              <button type="button" class="filter-chip active" data-filter="all">All</button>
+              <button type="button" class="filter-chip" data-filter="Prayer">Prayer</button>
+              <button type="button" class="filter-chip" data-filter="Memory">Memory</button>
+              <button type="button" class="filter-chip" data-filter="Scripture">Scripture</button>
+              <button type="button" class="filter-chip" data-filter="One Word">One Word</button>
+            </div>
+            <div id="legacyFeed" class="legacy-stream"></div>
+          </section>
+        </section>
+
+        <section class="admin-page" id="page-announce" data-title="Announce" data-note="Tools for the host microphone">
+          <section class="panel announce-panel">
+            <div class="panel-head">
+              <div>
+                <div class="panel-label">Host tools</div>
+                <h2>Winner script</h2>
+              </div>
+            </div>
+            <p class="announce-copy">Copy a ready-to-read announcement for first, second and third place.</p>
+            <pre id="announcePreview" class="announce-preview">No table has submitted The Angela Challenge yet.</pre>
+            <div class="announce-actions">
+              <button class="primary-btn" id="copyAnnouncement" type="button">Copy winner script</button>
+              <button class="ghost-btn danger-btn" id="clearDemo" type="button">Clear local demo data</button>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div class="sidebar-backdrop hidden" id="sidebarBackdrop"></div>
+  </div>
+
+  <script src="assets/admin.js"></script>
+</body>
+</html>
