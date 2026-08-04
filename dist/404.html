@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#041820">
+  <title>Page not found · Angela Celebration</title>
+  <link rel="icon" href="public/logobg.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#071b24;
+      --deep:#04141c;
+      --gold:#d4ad5e;
+      --gold-soft:#f0d7a0;
+      --cream:#f7f1e7;
+      --display:"Cormorant Garamond",Georgia,serif;
+      --sans:"Manrope",system-ui,sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh;display:grid;place-items:center;
+      padding:40px 5vw;color:var(--cream);font-family:var(--sans);
+      background:#04141c;
+      text-align:center;
+      position:relative;
+    }
+    body::before{
+      content:"";
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 70% 45% at 15% -10%, rgba(212,173,94,.22), transparent 55%),
+        radial-gradient(ellipse 55% 40% at 90% 10%, rgba(56,120,140,.28), transparent 50%),
+        radial-gradient(ellipse 50% 50% at 50% 100%, rgba(212,173,94,.08), transparent 55%),
+        linear-gradient(165deg, #082533 0%, #04141c 45%, #06151c 100%);
+    }
+    body::after{
+      content:"";
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 60V0h60' fill='none' stroke='rgba(212,173,94,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+    }
+    .shell{
+      position:relative;z-index:1;
+      width:min(100%,480px);
+      padding:42px 32px;
+      border:1px solid rgba(212,173,94,.28);
+      background:linear-gradient(180deg, rgba(255,253,248,.08), rgba(255,253,248,.03));
+      animation:rise .55s ease both;
+    }
+    img{width:110px;height:auto;margin:0 auto 22px;display:block}
+    .kicker{
+      margin:0 auto;
+      color:var(--gold);
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      font-size:11px;
+      font-weight:700;
+      display:block;
+      width:fit-content;
+    }
+    .code{
+      margin:18px 0 8px;font-family:var(--display);font-size:clamp(64px,14vw,96px);
+      line-height:.9;letter-spacing:.06em;color:var(--gold-soft);
+    }
+    h1{
+      margin:0 0 14px;font-family:var(--display);font-weight:400;
+      font-size:clamp(28px,6vw,40px);letter-spacing:.04em;
+    }
+    p{
+      margin:0 auto 28px;max-width:34ch;color:rgba(247,241,231,.7);line-height:1.65;
+    }
+    .actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    a{
+      display:inline-block;text-decoration:none;padding:14px 18px;
+      letter-spacing:.1em;text-transform:uppercase;font-size:12px;font-weight:800;
+      transition:transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .primary{background:var(--gold);color:var(--ink)}
+    .primary:hover{background:var(--gold-soft);transform:translateY(-1px)}
+    .ghost{
+      border:1px solid rgba(212,173,94,.35);color:var(--cream);
+    }
+    .ghost:hover{border-color:var(--gold);color:var(--gold-soft)}
+    @keyframes rise{
+      from{opacity:0;transform:translateY(14px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <img src="public/logobg.png" alt="Celebrate Angela Ifonlaja">
+    <p class="kicker">Angela celebration</p>
+    <div class="code">404</div>
+    <h1>This page does not exist</h1>
+    <p>The link may be mistyped, or the page has moved. Return to the celebration experience to continue.</p>
+    <div class="actions">
+      <a class="primary" href="/challenge.html">Back to celebration</a>
+      <a class="ghost" href="/">Go home</a>
+    </div>
+  </main>
+</body>
+</html>

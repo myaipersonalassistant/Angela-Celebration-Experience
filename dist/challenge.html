@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#041820">
+  <title>The Angela Challenge</title>
+  <link rel="icon" href="public/logobg.png" type="image/png">
+  <link rel="stylesheet" href="assets/celebration.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brandmark" id="brandHome" href="challenge.html" aria-label="Angela celebration home">
+      <img class="brand-logo" src="public/logobg.png" alt="Celebrate Angela Ifonlaja — Strength, Dignity, Grace">
+    </a>
+    <button class="circle-button" id="homeButton" aria-label="Return to activities">×</button>
+  </header>
+
+  <main class="page">
+    <section id="landing" class="screen active">
+      <div id="tableBanner" class="table-banner hidden" aria-live="polite"></div>
+      <p class="kicker">FRIDAY · 7 AUGUST 2026</p>
+      <h1>THE CELEBRATION<br>EXPERIENCE</h1>
+      <p class="script">Strength · Dignity · Grace</p>
+      <p class="intro-copy" id="welcomeCopy">Welcome to Angela’s celebration. Choose an experience and enjoy it together.</p>
+      <div class="gold-rule"></div>
+
+      <div class="activity-grid">
+        <button class="activity-card" data-go="setup">
+          <span>01</span>
+          <h2>Angela Challenge</h2>
+          <p>Work together as a table. One submission. Ten minutes.</p>
+        </button>
+        <button class="activity-card" data-go="years">
+          <span>02</span>
+          <h2>Guess the Year</h2>
+          <p>Match photographs from Angela’s story to the correct year.</p>
+        </button>
+        <button class="activity-card" data-go="legacy">
+          <span>03</span>
+          <h2>Legacy Wall</h2>
+          <p>Leave a prayer, memory, Scripture or one-word tribute.</p>
+        </button>
+        <button class="activity-card" data-go="programme">
+          <span>04</span>
+          <h2>Tonight’s Programme</h2>
+          <p>Follow the celebration from arrivals to the final farewell.</p>
+        </button>
+      </div>
+    </section>
+
+    <section id="setup" class="screen">
+      <button class="text-back" data-go="landing">← Experiences</button>
+      <p class="kicker">THE ANGELA CHALLENGE</p>
+      <h1>HOW WELL DO YOU<br>KNOW ANGELA?</h1>
+      <p class="script">One table · One team · One answer</p>
+
+      <div class="cream-panel">
+        <div class="table-pill" id="tablePill">TABLE</div>
+        <label>Choose your team name
+          <input id="teamName" placeholder="e.g. Team Grace">
+        </label>
+        <label>Table captain
+          <input id="captainName" placeholder="Enter one guest’s name">
+        </label>
+        <div class="rules">
+          <strong>THE RULES</strong>
+          <p>Discuss each answer together.</p>
+          <p>Only the captain should tap the answers.</p>
+          <p>No searching online.</p>
+          <p>The fastest table wins a tie.</p>
+        </div>
+        <button class="gold-button" id="startQuiz">BEGIN CHALLENGE →</button>
+      </div>
+    </section>
+
+    <section id="quiz" class="screen">
+      <div class="quiz-status">
+        <span id="questionCount">QUESTION 1 OF 20</span>
+        <span class="timer" id="timer">10:00</span>
+      </div>
+      <div class="progress"><span id="progressFill"></span></div>
+      <div class="cream-panel">
+        <p class="kicker dark">THE ANGELA CHALLENGE</p>
+        <h2 id="questionText" class="question"></h2>
+        <div id="answerList" class="answer-list"></div>
+        <button class="navy-button" id="nextQuestion" disabled>NEXT QUESTION →</button>
+      </div>
+    </section>
+
+    <section id="result" class="screen">
+      <p class="kicker">CHALLENGE COMPLETE</p>
+      <h1>WELL PLAYED!</h1>
+      <div class="result-seal">🏆</div>
+      <div class="cream-panel centred">
+        <p class="smallcaps">YOUR TABLE SCORE</p>
+        <div id="scoreValue" class="score">0/20</div>
+        <h2 id="scoreHeading">Excellent teamwork</h2>
+        <p id="scoreMessage"></p>
+        <div class="result-meta">
+          <div><small>TEAM</small><strong id="resultTeam">—</strong></div>
+          <div><small>TABLE</small><strong id="resultTable">—</strong></div>
+          <div><small>TIME</small><strong id="resultTime">—</strong></div>
+        </div>
+        <label>Complete this sentence in one word:
+          <span class="label-note">Angela’s life has taught us…</span>
+          <input id="tableWord" placeholder="e.g. Grace">
+        </label>
+        <button class="gold-button" id="submitScore">SUBMIT TABLE ENTRY →</button>
+        <p id="submitMessage" class="success hidden">Your table entry has been submitted.</p>
+      </div>
+    </section>
+
+    <section id="years" class="screen">
+      <button class="text-back" data-go="landing" id="yearsBack">← Experiences</button>
+      <p class="kicker">MEMORIES THROUGH TIME</p>
+      <h1>GUESS THE YEAR</h1>
+      <p class="intro-copy" id="yearsIntro">Study each photograph, discuss it as a table and choose the closest year.</p>
+
+      <div id="yearPlay" class="hidden">
+        <div class="quiz-status">
+          <span id="yearCount">PHOTO 1 OF 7</span>
+          <span id="yearProgressLabel">0 answered</span>
+        </div>
+        <div class="progress"><span id="yearProgressFill"></span></div>
+        <article class="year-card" id="yearCard">
+          <img class="year-photo" id="yearPhoto" src="" alt="">
+          <div class="year-card-copy">
+            <p class="kicker dark" id="yearKicker">PHOTO 1 OF 7</p>
+            <h2 id="yearTitle"></h2>
+            <p id="yearStory"></p>
+            <p class="year-question">What year was this photograph taken?</p>
+            <div class="year-options" id="yearOptions"></div>
+          </div>
+        </article>
+        <div class="year-nav">
+          <button class="outline-button" id="yearPrev" type="button">← PREVIOUS</button>
+          <button class="gold-button" id="yearNext" type="button" disabled>NEXT PHOTO →</button>
+        </div>
+      </div>
+
+      <div id="yearStartPanel" class="cream-panel centred">
+        <p class="smallcaps">7 PHOTOGRAPHS</p>
+        <h2>One photo at a time</h2>
+        <p>Discuss together, pick a year, then move to the next memory.</p>
+        <button class="gold-button" id="startYears">BEGIN GUESS THE YEAR →</button>
+      </div>
+
+      <div id="yearResult" class="cream-panel centred hidden"></div>
+    </section>
+
+    <section id="legacy" class="screen">
+      <button class="text-back" data-go="landing">← Experiences</button>
+      <p class="kicker">WORDS THAT REMAIN</p>
+      <h1>THE ANGELA<br>LEGACY WALL</h1>
+      <p class="script">Share what her life means to you</p>
+      <div class="cream-panel">
+        <label>Choose a message type
+          <select id="legacyType">
+            <option value="Prayer">Prayer or blessing</option>
+            <option value="Memory">Favourite memory</option>
+            <option value="Scripture">Bible verse</option>
+            <option value="One Word">One-word tribute</option>
+          </select>
+        </label>
+        <label>Your name
+          <input id="legacyName" placeholder="Your name">
+        </label>
+        <label>Your message
+          <textarea id="legacyMessage" rows="6" placeholder="Write something meaningful for Angela…"></textarea>
+        </label>
+        <button class="gold-button" id="submitLegacy">LEAVE YOUR MESSAGE →</button>
+        <p id="legacySuccess" class="success hidden">Thank you. Your message has been added.</p>
+      </div>
+    </section>
+
+    <section id="programme" class="screen">
+      <button class="text-back" data-go="landing">← Experiences</button>
+      <p class="kicker">FRIDAY · 7 AUGUST 2026</p>
+      <h1>THE EVENING<br>AHEAD</h1>
+      <p class="script">An evening of honour, laughter and love</p>
+      <div class="timeline">
+        <div><span>01</span><time>6:30 PM</time><h2>Guest Arrival</h2><p>Welcome drinks, photographs and fellowship.</p></div>
+        <div><span>02</span><time>7:00 PM</time><h2>Welcome & Dinner</h2><p>Opening prayer and dinner service.</p></div>
+        <div><span>03</span><time>7:40 PM</time><h2>Angela Challenge</h2><p>Scan the QR code, work together and submit one table entry.</p></div>
+        <div><span>04</span><time>8:00 PM</time><h2>Tributes</h2><p>Words from Chris, family and friends.</p></div>
+        <div><span>05</span><time>8:15 PM</time><h2>Cake Celebration</h2><p>Birthday song, cake cutting and photographs.</p></div>
+        <div><span>06</span><time>8:30 PM</time><h2>Dessert & Legacy Wall</h2><p>Leave Angela a prayer, memory, Scripture or tribute.</p></div>
+        <div><span>07</span><time>8:50 PM</time><h2>Thanks & Closing Prayer</h2><p>Gift bags, final photographs and farewell by 9:00 PM.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/celebration.js"></script>
+</body>
+</html>
